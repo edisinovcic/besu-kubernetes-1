@@ -7,6 +7,8 @@ metadata:
   name: {{ $fullName }}-http
   annotations:
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
     app: {{ include "besu-node.name" . }}
     chart: {{ include "besu-node.chart" . }}
@@ -33,5 +35,5 @@ spec:
         - path: {{ $ingressPath }}
           backend:
             serviceName: {{ $fullName }}
-            servicePort: http
+            servicePort: 8545
 {{- end }}

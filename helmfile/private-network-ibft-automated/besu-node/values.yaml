@@ -4,7 +4,7 @@ index: 0
 
 image:
   repository: hyperledger/besu
-  tag: develop
+  tag: 1.3
   # Always | IfNotPresent
   pullPolicy: IfNotPresent
 
@@ -125,22 +125,22 @@ ingress_http:
   #   ingress.kubernetes.io/ssl-redirect: "true"
   #   kubernetes.io/tls-acme: "true"
   #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
-  path: /
-  hosts:
-    - k8s.localhost.lan
+  path: /jsonrpc
+  #hosts:
+  #  - k8s.localhost.lan
   # tls:
   #  - secretName: clique-tls
   #    hosts:
   #      - chain.apps.consensys
 
 ingress_ws:
-  enabled: false
+  enabled: true
   annotations: {}
   #   ingress.kubernetes.io/ssl-redirect: "true"
   #   kubernetes.io/tls-acme: "true"
   #   nginx.ingress.kubernetes.io/rewrite-target: /
   #   certmanager.k8s.io/cluster-issuer: letsencrypt-production
-  # path: /ws
+  path: /ws
   # hosts:
   #   - k8s.localhost.lan
   # tls:
